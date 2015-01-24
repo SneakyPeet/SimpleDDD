@@ -1,4 +1,4 @@
-# A Practical Domain Driven Design Project Template
+# A Practical Domain Driven Design Project Template ![](https://travis-ci.org/SneakyPeet/SimpleDDD.svg?branch=master)
 
 This is a companion project to the Practical Domain Driven Design articles posted [sneakycode.net](http://sneakycode.net).
 It gets updated in parallel with the above mentioned articles.
