@@ -1,4 +1,6 @@
-﻿namespace SimpleDDD.Domain.Abstractions
+﻿using System;
+
+namespace SimpleDDD.Domain.Abstractions
 {
     //Todo Choose an entity below that suits your needs and rename it to IEntity
     //http://sneakycode.net/entity-is-for-identity/
@@ -29,8 +31,8 @@
     /// It is identified by it's Id and not by other attributes
     /// Use if Identity comparison is not trivial
     /// </summary>
-    /// <typeparam name="TKey"></typeparam>
-    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey">Identity Type</typeparam>
+    /// <typeparam name="TEntity">Entity Type For Comparison</typeparam>
     public interface IComparableEntity<out TKey, in TEntity>
     {
         TKey Id { get; }
@@ -43,10 +45,22 @@
     /// It is identified by it's Id and not by other attributes
     /// Use if Identity comparison is not trivial. But not all Entities require complex comparison
     /// </summary>
-    /// <typeparam name="TKey"></typeparam>
-    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey">Identity Type</typeparam>
+    /// <typeparam name="TEntity">Entity Type For Comparison</typeparam>
     public interface IComparableInheritingEntity<out TKey, in TEntity> : IEntity<TKey>
     {
         bool IsSameAs(TEntity entity);
+    }
+
+    /// <summary>
+    /// An Entity is responsible for tracking it's state and the rules regulating it's lifecycle.
+    /// It is identified by it's Id and not by other attributes
+    /// Use Built in IComparable
+    /// </summary>
+    /// <typeparam name="TKey">Identity Type</typeparam>
+    /// <typeparam name="TEntity">Entity Type For Comparison</typeparam>
+    public interface IEntityInheritingIComparable<out TKey, in TEntity> : IComparable<TEntity>
+    {
+        TKey Id { get; }
     }
 }
