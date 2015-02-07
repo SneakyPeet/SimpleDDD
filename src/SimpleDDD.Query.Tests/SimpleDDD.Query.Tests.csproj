@@ -43,19 +43,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FetchableTests.cs" />
+    <Compile Include="FetcherTests\FetcherTests.cs" />
+    <Compile Include="FetchableTests\FetchableQueryTests.cs" />
+    <Compile Include="FetchableTests\FetchableConstructionTests.cs" />
+    <Compile Include="FetcherTests\Models\Product.cs" />
+    <Compile Include="FetcherTests\Models\ProductFetchable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestTable.cs" />
+    <Compile Include="FetchableTests\Models\TestTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SimpleDDD.Query.Dapper\SimpleDDD.Query.Dapper.csproj">
+      <Project>{a109387c-6744-4c2f-a126-832a034929e7}</Project>
+      <Name>SimpleDDD.Query.Dapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SimpleDDD.Query\SimpleDDD.Query.csproj">
       <Project>{fd672d9f-8131-4cec-b19b-c82a84e369ba}</Project>
       <Name>SimpleDDD.Query</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
