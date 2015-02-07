@@ -7,10 +7,12 @@ namespace SimpleDDD.Query
     public abstract class Fetchable
     {
         private readonly string container;
+        private readonly Type resultType;
         
-        protected Fetchable(string container)
+        protected Fetchable(string container, Type resultType)
         {
             this.container = container;
+            this.resultType = resultType;
             this.Validate();
         }
 
@@ -19,6 +21,10 @@ namespace SimpleDDD.Query
             if(string.IsNullOrEmpty(this.container))
             {
                 throw new FetchableContainerEmptyException();
+            }
+            if (this.resultType == null)
+            {
+                throw new FetchableResultTypeNullException();
             }
         }
 
@@ -32,16 +38,28 @@ namespace SimpleDDD.Query
             {
                 if(tie.InnerException != null)
                 {
-                    if (tie.InnerException is FetchableContainerEmptyException)
+                    var type = tie.InnerException.GetType();
+                    if (type == typeof(FetchableContainerEmptyException))
                     {
                         throw new FetchableContainerEmptyException();
+                    }
+                    if (type == typeof(FetchableResultTypeNullException))
+                    {
+                        throw new FetchableResultTypeNullException();
                     }
                 }
                 throw;
             }
-            
+        }
+
+        public string Query
+        {
+            get
+            {
+                return "Select * From " + container;
+            }
         }
     }
 
-    //todo make serializable
+    
 }

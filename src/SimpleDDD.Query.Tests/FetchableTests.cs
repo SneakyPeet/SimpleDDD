@@ -29,13 +29,20 @@ namespace SimpleDDD.Query.Tests
             Fetchable.SelectFrom<EmptyContainerTestTable>();
         }
 
-        //[Test]
-        //public void GivenFetchable_QueryShouldBe_SelectStarFrom()
-        //{
-        //    var fetchable = Fetchable.SelectFrom<TestTable>();
+        [Test]
+        [ExpectedException(typeof(FetchableResultTypeNullException))]
+        public void GivenFetchable_WithNullType_ThrowException()
+        {
+            Fetchable.SelectFrom<NullTypeTestTable>();
+        }
 
-        //    Assert.AreEqual("Select * From TestTable", fetchable.Query);
-        //}
+        [Test]
+        public void GivenFetchable_QueryShouldBe_SelectStarFrom()
+        {
+            var fetchable = Fetchable.SelectFrom<TestTable>();
+
+            Assert.AreEqual("Select * From TestTable", fetchable.Query);
+        }
 
     }
 
