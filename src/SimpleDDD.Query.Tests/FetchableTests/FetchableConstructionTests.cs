@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SimpleDDD.Query.Exceptions;
+using SimpleDDD.Query.Language;
 using SimpleDDD.Query.Tests.FetchableTests.Models;
 
 namespace SimpleDDD.Query.Tests.FetchableTests

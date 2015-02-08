@@ -2,7 +2,7 @@
 using System.Reflection;
 using SimpleDDD.Query.Exceptions;
 
-namespace SimpleDDD.Query
+namespace SimpleDDD.Query.Language
 {
     public class Select
     {

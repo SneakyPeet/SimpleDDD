@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 using SimpleDDD.Query.Dapper;
+using SimpleDDD.Query.Language;
 using SimpleDDD.Query.Tests.FetcherTests.Models;
 
 namespace SimpleDDD.Query.Tests.FetcherTests
